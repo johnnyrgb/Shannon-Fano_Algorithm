@@ -6,7 +6,7 @@ internal class Program
     private static void Main(string[] args)
     {
         string str = "В C# вы можете использовать следующий код для вывода ключей и значений словаря";
-        Dictionary<char, int> keyValuePairs = new Dictionary<char, int>();
+        Dictionary<char, int> keyValuePairs = new Dictionary<char, int>(); // заполнение словоря буквами из которых состоят входные данные и высчитываем частоту их появления
         for (int i = 0; i < str.Length; i++)
         {
             if (keyValuePairs.ContainsKey(str[i]))
