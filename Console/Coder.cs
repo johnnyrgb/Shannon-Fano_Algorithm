@@ -10,18 +10,18 @@ internal class Coder
 {
     public Coder() { }
 
-    public void Coding(string codeString)
+    public string Coding(string Str)
     {
         Dictionary<char, int> keyValuePairs = new Dictionary<char, int>(); // заполнение словоря буквами из которых состоят входные данные и высчитываем частоту их появления
-        for (int i = 0; i < codeString.Length; i++)
+        for (int i = 0; i < Str.Length; i++)
         {
-            if (keyValuePairs.ContainsKey(codeString[i]))
+            if (keyValuePairs.ContainsKey(Str[i]))
             {
-                keyValuePairs[codeString[i]]++;
+                keyValuePairs[Str[i]]++;
             }
             else
             {
-                keyValuePairs.Add(codeString[i], 1);
+                keyValuePairs.Add(Str[i], 1);
             }
         }
 
@@ -40,6 +40,26 @@ internal class Coder
         {
             System.Console.WriteLine($"{keyCodes.ElementAt(i).Key} {keyCodes.ElementAt(i).Value}");
         }
+
+        string returnString = "";
+
+        for (int i = 0; i < Str.Length; i++)
+        {
+            returnString += keyCodes[Str[i]];
+        }
+
+        string codeString = "";
+
+        for (int i = 0; i < keyCodes.Count; i++)
+        {
+            codeString += keyCodes.ElementAt(i).Key;
+            codeString += keyCodes.ElementAt(i).Value;
+        }
+        codeString += '\n';
+
+        returnString = codeString + returnString;
+
+        return returnString;
     }
 
     private Node CreateTree(Dictionary<char, int> keyValuePairs, Node parent)
