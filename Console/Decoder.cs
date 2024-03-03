@@ -58,9 +58,4 @@ internal class Decoder
 
         return returnString;
     }
-
-    private char SearchChar(string code)
-    {
-        return code[0];
-    }
 }
