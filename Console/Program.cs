@@ -27,6 +27,15 @@ internal class Program
         Node tree = new Node();
 
         CreateTree(keyValuePairs, tree);
+
+        Dictionary<char, string> keyCodes = new Dictionary<char, string>();
+
+        CreateKeyCodes(tree, keyCodes);
+
+        for (int i = 0; i < keyCodes.Count; i++)
+        {
+            Console.WriteLine($"{keyCodes.ElementAt(i).Key} {keyCodes.ElementAt(i).Value}");
+        }
     }
 
     private static Node CreateTree(Dictionary<char, int> keyValuePairs, Node parent)
@@ -90,5 +99,24 @@ internal class Program
         }
 
         return node;
+    }
+
+    private static void CreateKeyCodes(Node node, Dictionary<char, string> keyCodes, string code = "")
+    {
+        if (node.Item == null)
+        {
+            if (node.LeftNode != null)
+            {
+                CreateKeyCodes(node.LeftNode, keyCodes, code + "0");
+            }
+            if (node.RightNode != null)
+            {
+                CreateKeyCodes(node.RightNode, keyCodes, code + "1");
+            }
+        }
+        else
+        {
+            keyCodes.Add((char)node.Item, code);
+        }
     }
 }
