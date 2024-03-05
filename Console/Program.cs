@@ -7,7 +7,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string codeString = "ЕВГЕНИЙ РАФАИЛОВИЧ ПАТИЛЕЕВ"; //"В C# вы можете использовать следующий код для вывода ключей и значений словаря";
+        string codeString = "АБРАКАДАБРА";
         
         Coder coder = new Coder();
         string returnString = coder.Coding(codeString);

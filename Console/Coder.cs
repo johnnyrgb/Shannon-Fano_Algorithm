@@ -36,6 +36,8 @@ internal class Coder
 
         CreateKeyCodes(tree, keyCodes);
 
+        string path = "test.dat";
+
         for (int i = 0; i < keyCodes.Count; i++)
         {
             System.Console.WriteLine($"{keyCodes.ElementAt(i).Key} {keyCodes.ElementAt(i).Value}");
@@ -55,9 +57,23 @@ internal class Coder
             codeString += keyCodes.ElementAt(i).Key;
             codeString += keyCodes.ElementAt(i).Value;
         }
-        codeString += '\n';
 
-        returnString = codeString + returnString;
+        using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Create)))
+        {
+            writer.Write(keyCodes.Count);
+            for (int i = 0; i < keyCodes.Count; i++)
+            {
+                writer.Write(keyCodes.ElementAt(i).Key);
+                writer.Write(keyCodes.ElementAt(i).Value);
+            }
+            //writer.Write(codeString);
+        }
+
+        //codeString += '\n';
+
+        //returnString = codeString + returnString;
+
+        
 
         return returnString;
     }

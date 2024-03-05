@@ -8,14 +8,6 @@ namespace Console
 {
     public class Node
     {
-        public Node(char? item, Node? parent)
-        {
-            Item = item;
-            LeftNode = null;
-            RightNode = null;
-            ParentNode = parent;
-        }
-
         public Node()
         {
 

@@ -14,28 +14,39 @@ internal class Decoder
     {
         Dictionary<string, char> keyCodes = new Dictionary<string, char>();
 
-        string code = "";
-        char? symbol = null;
-        while(codeString[0] != '\n')
+        using (BinaryReader reader = new BinaryReader(File.Open("test.dat", FileMode.Open)))
         {
-            if (codeString[0] == '0' || codeString[0] == '1')
+            int count = reader.ReadInt32();
+            for (int i = 0; i < count; i++)
             {
-                code += codeString[0];
-                codeString = codeString.Remove(0, 1);
-            }
-            else
-            {
-                if (symbol != null)
-                {
-                    keyCodes.Add(code, (char)symbol);
-                }
-                code = "";
-                symbol = codeString[0];
-                codeString = codeString.Remove(0, 1);
+                char value = reader.ReadChar();
+                string key = reader.ReadString();
+                keyCodes.Add(key, value);
             }
         }
-        keyCodes.Add(code, (char)symbol);
-        codeString = codeString.Remove(0, 1);
+
+        string code = "";
+        //char? symbol = null;
+        //while(codeString[0] != '\n')
+        //{
+        //    if (codeString[0] == '0' || codeString[0] == '1')
+        //    {
+        //        code += codeString[0];
+        //        codeString = codeString.Remove(0, 1);
+        //    }
+        //    else
+        //    {
+        //        if (symbol != null)
+        //        {
+        //            //keyCodes.Add(code, (char)symbol);
+        //        }
+        //        code = "";
+        //        symbol = codeString[0];
+        //        codeString = codeString.Remove(0, 1);
+        //    }
+        //}
+        ////keyCodes.Add(code, (char)symbol);
+        //codeString = codeString.Remove(0, 1);
 
         for (int i = 0; i < keyCodes.Count; i++)
         {
